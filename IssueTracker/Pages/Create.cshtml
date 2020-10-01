@@ -1,0 +1,32 @@
+﻿@page
+@model IssueTracker.Pages.CreateModel
+@{
+}
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}
+<h2>Log a New Issue</h2>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Issue.Description"></label>
+        <input class="form-control" asp-for="Issue.Description" />
+        <span asp-validation-for="Issue.Description"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Issue.Narrative"></label>
+        <textarea class="form-control" asp-for="Issue.Narrative"></textarea>
+        <span asp-validation-for="Issue.Narrative"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Issue.AddedBy"></label>
+        <input class="form-control" asp-for="Issue.AddedBy" />
+        <span asp-validation-for="Issue.AddedBy"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Issue.Status"></label>
+        <input class="form-control" asp-for="Issue.Status" />
+        <span asp-validation-for="Issue.Status"></span>
+    </div>
+    <button class="btn btn-success" type="submit">Add This Issue</button>
+</form>
+<partial name="_footer"/>

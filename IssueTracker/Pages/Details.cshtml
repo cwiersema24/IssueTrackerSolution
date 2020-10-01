@@ -1,0 +1,32 @@
+﻿@page
+@model IssueTracker.Pages.DetailsModel
+@{
+}
+<h2>Details Here</h2>
+<form method="post">
+    <div>
+        <label asp-for="Issue.Description"></label>
+        <span>@Model.Issue.Description</span>
+    </div>
+    <div>
+        <label asp-for="Issue.Narrative"></label>
+        <div>
+            <pgr-markdown>
+@Model.Issue.Narrative
+            </pgr-markdown>
+        </div>
+    </div>
+    <div>
+        <label asp-for="Issue.AddedBy"></label>
+        <span>@Model.Issue.AddedBy</span>
+    </div>
+    <div>
+        <label asp-for="Issue.Status"></label>
+        <span>@Model.Issue.Status</span>
+    </div>
+    <div>
+        <button class="btn btn-danger"asp-page-handler="Close" asp-route-id="@Model.Issue.Id">Close This Issue</button>
+    </div>
+</form>
+<a class="btn btn-primary" asp-page="Index">Back to List</a>
+<!--<pgr-ssn mask-character="*">555-12-1234</pgr-ssn> -->

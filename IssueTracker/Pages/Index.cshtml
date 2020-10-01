@@ -1,10 +1,24 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome To Issue Tracker</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2>Welcome @Model.Caption</h2>
+@if(Model.Issues.Count == 0)
+{
+   <h3>Congratulations! You have no open issues!</h3>
+}
+<ul class="list-unstyled">
+    @foreach (var issue in Model.Issues)
+    {
+        <li class="alert alert-info">
+            <span>@issue.Description</span>
+            <a class="btn btn-primary" asp-page="Details" asp-route-id="@issue.Id">Detals</a>
+            
+        </li>
+    }
+
+</ul>
+<a asp-page="Create" class="btn btn-primary">Add a new Issue</a>
+
