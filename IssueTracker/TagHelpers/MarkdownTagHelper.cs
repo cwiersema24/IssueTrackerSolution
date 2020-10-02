@@ -15,7 +15,9 @@ namespace IssueTracker.TagHelpers
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             var childContent = await output.GetChildContentAsync();
-            var transformContent = CommonMarkConverter.Convert(childContent.GetContent().Trim());
+            var content = childContent.GetContent();
+            content = content.Replace("&#xD;&#xA;", "\r\n");
+            var transformContent = CommonMarkConverter.Convert(content);
             output.TagName = null;
             output.Content.SetHtmlContent(transformContent);
         }
